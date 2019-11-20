@@ -1,5 +1,7 @@
 import json
 import csv
+import pprint
+import os
 
 
 def parse_input_file(input_file, output_file):
@@ -33,12 +35,18 @@ def parse_input_data(input_data, output_file):
     """
 
     tsv_filename = output_file
-
+    # stream = os.popen('pwd')
+    # output = stream.read()
+    # print('***PWD************' + output + '*****************')
+    # stream = os.popen('ls')
+    # output = stream.read()
+    # print('***LS************' + output + '*****************')
     with open(tsv_filename, 'w') as tsvfile:
 
         file_writer = csv.writer(tsvfile, delimiter='\t')
 
         header = input_data['data']['col_ids']
+
         header.insert(0, 'taxonomic_id')
         file_writer.writerow(header)
 

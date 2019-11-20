@@ -10,6 +10,8 @@ from installed_clients.WorkspaceClient import Workspace
 from .util.amplicon_input import parse_input_data
 from .util.program_runner import run_program
 from .util.amplicon_report import create_report
+
+import pprint
 #END_HEADER
 
 
@@ -70,10 +72,10 @@ class AMPLICON:
         })['data'][0]['data']
 
         # define file names
-        parse_out_file = 'parse_out.tsv'
+        parse_out_file = os.path.join('work/tmp', 'parse_out.tsv')
 
         input_file = parse_out_file
-        output_file = 'output.tsv'
+        output_file = os.path.join('work/tmp', 'output.tsv')
 
         # 1. convert data into tsv format
         parse_input_data(obj, parse_out_file)
